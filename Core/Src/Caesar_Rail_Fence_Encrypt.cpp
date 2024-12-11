@@ -2,11 +2,11 @@
 
 char caesarChar(char c, int key) {
     if (c >= 'A' && c <= 'Z') {
-        return (c - 'A' + key) % 26 + 'A';  
+        return (c - 'A' + key) % 26 + 'A';
     } else if (c >= 'a' && c <= 'z') {
-        return (c - 'a' + key) % 26 + 'a';  
+        return (c - 'a' + key) % 26 + 'a';
     } else {
-        return c;  
+        return c;
     }
 }
 
@@ -21,24 +21,24 @@ std::string caesarEncrypt(const std::string& plainText, int key) {
 
 
 std::string railFenceEncrypt(const std::string& plainText, int numRails) {
-    if (numRails == 1) return plainText;  
+    if (numRails == 1) return plainText;
 
     std::vector<std::string> rails(numRails);
     int rail = 0;
     bool directionDown = true;
 
-   
+
     for (char c : plainText) {
         rails[rail] += c;
         if (rail == 0) {
-            directionDown = true;  
+            directionDown = true;
         } else if (rail == numRails - 1) {
-            directionDown = false; 
+            directionDown = false;
         }
         rail += directionDown ? 1 : -1;
     }
 
-    
+
     std::string encryptedText;
     for (const auto& row : rails) {
         encryptedText += row;
